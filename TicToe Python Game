@@ -1,0 +1,113 @@
+def main():
+    row1 = [1,2,3]
+    row2 = [4,5,6]
+    row3 = [7,8,9]
+    x = 1
+    mark = "x"
+    plr = x % 2
+    check = 2
+    plr_input = 0
+    print("Hello to Python TicTacToe Game")
+    while check == 2:
+        print_board(row1,row2,row3)
+        print("\n\n\n")
+        if plr == 1:
+            print("Player 1 is your Turn")
+            plr_input = int(input("Choose a number of Block: "))
+            num = plr_input
+            mark = "x"
+
+        elif plr == 0:
+            print("Player 2 is your Turn")
+            plr_input = int(input("Choose a number of Block: ")) 
+            num = plr_input
+            mark = "o"
+
+        if num == 1 and row1[0] == 1:
+            row1[0] = mark
+        elif num == 2 and row1[1] == 2:
+            row1[1] = mark
+        elif num == 3 and row1[2] == 3:
+            row1[2] = mark
+        elif num == 4 and row2[0] == 4:
+            row2[0] = mark
+        elif num == 5 and row2[1] == 5:
+            row2[1] = mark
+        elif num == 6 and row2[2] == 6:
+            row2[2] = mark
+        elif num == 7 and row3[0] == 7:
+            row3[0] = mark
+        elif num == 8 and row3[1] == 8:
+            row3[1] = mark
+        elif num == 9 and row3[2] == 9:
+            row3[2] = mark
+        else:
+            print("Choise out of bound or Choosed by player Already")
+            x -= 1
+            plr = x % 2
+
+
+        check = victory_check(row1, row2, row3)  
+        x += 1
+        plr = x % 2
+        print("\n\n\n\n\n\n\n")
+    
+
+    if check == -1:
+        print_board(row1,row2,row3)
+        print("Player 1 wins")
+    elif check == 1:
+        print_board(row1,row2,row3)
+        print("Player 2 wins")
+    elif check == 0:
+        print_board(row1,row2,row3)
+        print("None Wins. TIE !!")
+        
+
+
+        
+
+def victory_check(r1,r2,r3):
+    if r1[0] == r1[1] == r1[2] == "x":
+        return -1
+    elif r1[0] == r2[1] == r3[2] == "x":
+        return -1
+    elif r1[0] == r2[0] == r3[0] == "x":
+        return -1
+    elif r1[2] == r2[2] == r3[2] == "x":
+        return -1
+    elif r3[0] == r3[1] == r3[2] == "x":
+        return -1
+    elif r3[0] == r2[1] == r1[2] == "x":
+        return -1
+    elif r2[0] == r2[1] == r2[2] == "x":
+        return -1
+    elif r1[0] == r1[1] == r1[2] == "o":
+        return 1
+    elif r1[0] == r2[1] == r3[2] == "o":
+        return 1
+    elif r1[0] == r2[0] == r3[0] == "o":
+        return 1
+    elif r1[2] == r2[2] == r3[2] == "o":
+        return 1
+    elif r3[0] == r3[1] == r3[2] == "o":
+        return 1
+    elif r3[0] == r2[1] == r1[2] == "o":
+        return 1
+    elif r2[0] == r2[1] == r2[2] == "o":
+        return 1
+    elif (r1[0] != 1) and (r1[1] != 2) and (r1[2] != 3) and (r2[0] != 4) and (r2[1] != 5) and (r2[2] != 6) and (r3[0] != 7) and (r3[1] != 8) and (r3[2] != 9): #Basically if all values dont have the default
+        return 0
+    else:
+        return 2
+    
+
+
+def print_board(r1,r2,r3):
+    print(f" {r1[0]} | {r1[1]} | {r1[2]} ")
+    print(f"---|---|---")
+    print(f" {r2[0]} | {r2[1]} | {r2[2]} ")
+    print(f"---|---|---")
+    print(f" {r3[0]} | {r3[1]} | {r3[2]} ")
+    
+main()
