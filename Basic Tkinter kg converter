@@ -1,0 +1,41 @@
+from tkinter import *
+
+window = Tk()
+#window.geometry("300x300")
+
+def from_KG():
+    grams = float(a2_input.get()) * 1000
+    b1.delete("1.0", END)
+    b1.insert(END, str(grams) + " grams" )
+
+    pounds = float(a2_input.get()) * 2.20462
+    b2.delete("1.0", END)
+    b2.insert(END, str(pounds) + " pounds")
+
+    ounces = float(a2_input.get()) * 35.274
+    b3.delete("1.0", END)
+    b3.insert(END, str(ounces) + " ounces")
+
+
+a1 = Label(window, text = "KG")
+a1.grid(row = 0, column = 0)
+a1.config(font = ("Courier", 14))
+
+a2_input = StringVar()
+a2 = Entry(window, textvariable = a2_input)
+a2.grid(row = 0, column = 1)
+
+a3 = Button(window, text = "Convert", command = from_KG)
+a3.grid(row = 0, column = 2)
+
+b1 = Text(window, height = 1 , width= 20)
+b1.grid(row = 1, column = 0)
+
+b2 = Text(window, height = 1 , width= 20)
+b2.grid(row = 1, column = 1)
+
+b3 = Text(window, height = 1 , width= 20)
+b3.grid(row = 1, column = 2)
+
+
+window.mainloop()
